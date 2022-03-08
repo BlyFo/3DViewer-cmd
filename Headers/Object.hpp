@@ -17,6 +17,7 @@ private:
     std::string lightAscii;
     Vector3 scale;
     Vector3 lightSource;
+    int colorCode;
 
     const float theta_spacing = 0.07;
     const float phi_spacing = 0.02;
@@ -38,9 +39,11 @@ public:
     void setScale(Vector3 newScale);
     void setRotationOverTime(Vector3 newRotationOverTime);
     void setColor(std::string newColor);
+    int getColorCode();
     void setLightSource(Vector3 newLightSource);
     void IncreaseRotation();
     void Draw_Object(char *objectDrawBuffer, float *objectMathBuffer, size_t height, size_t width);
-    void Draw_Point(char *objectDrawBuffer, float *objectMathBuffer, size_t height, size_t width, float theta, float phi);
+    void Draw_Point(char *objectDrawBuffer, float *objectMathBuffer, int height, int width, float theta, float phi);
+    virtual void objectType() = 0;
 };
 #endif

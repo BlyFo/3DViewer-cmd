@@ -17,6 +17,10 @@ Vector3 Donut::DrawObject(float theta, float phi)
     result.z = (outerRadius + innerRadius * cos(theta)) * sin(phi);
     return result;
 }
+void Donut::objectType()
+{
+    printf("Donut \n");
+}
 
 Donut::Donut()
 {

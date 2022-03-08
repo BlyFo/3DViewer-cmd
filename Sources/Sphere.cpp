@@ -17,8 +17,12 @@ Vector3 Sphere::DrawObject(float theta, float phi)
     result.z = (radius * cos(theta)) * sin(phi);
     return result;
 }
+void Sphere::objectType()
+{
+    printf("Sphere \n");
+}
 
 Sphere::Sphere()
 {
-    radius = 3;
+    radius = 2;
 }

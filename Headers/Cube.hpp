@@ -5,17 +5,17 @@
 #include "Vector3.hpp"
 #include "Object.hpp"
 
-#ifndef _SPHERE_H
-#define _SPHERE_H
+#ifndef _CUBE_H
+#define _CUBE_H
 
-class Sphere : public Object
+class Cube : public Object
 {
 private:
-    float radius;
+    float size;
 
 public:
     Vector3 DrawObject(float theta, float phi);
     void objectType();
-    Sphere();
+    Cube();
 };
 #endif

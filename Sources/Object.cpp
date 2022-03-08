@@ -91,6 +91,7 @@ Object::Object()
     scale = {1, 1, 1};
     lightSource = {0, 0, 0};
     color = "white";
+    colorCode = 0;
 }
 void Object::setPosition(Vector3 newPosition)
 {
@@ -117,11 +118,48 @@ void Object::setRotationOverTime(Vector3 newRotationOverTime)
 void Object::setColor(string newColor)
 {
     color = newColor;
+    if (newColor == "black")
+    {
+        colorCode = 30;
+    }
+    if (newColor == "red")
+    {
+        colorCode = 31;
+    }
+    if (newColor == "green")
+    {
+        colorCode = 32;
+    }
+    if (newColor == "yellow")
+    {
+        colorCode = 33;
+    }
+    if (newColor == "blue")
+    {
+        colorCode = 34;
+    }
+    if (newColor == "magenta")
+    {
+        colorCode = 35;
+    }
+    if (newColor == "cyan")
+    {
+        colorCode = 36;
+    }
+    if (newColor == "white")
+    {
+        colorCode = 37;
+    }
 }
 void Object::setLightSource(Vector3 newLightSource)
 {
     lightSource = newLightSource;
 }
+int Object::getColorCode()
+{
+    return colorCode;
+}
+
 void Object::Draw_Object(char *objectDrawBuffer, float *objectMathBuffer, size_t height, size_t width)
 {
     const size_t buffer_size = height * width;
@@ -149,12 +187,12 @@ void Object::Draw_Object(char *objectDrawBuffer, float *objectMathBuffer, size_t
             if (pointLight > 0)
             {
                 int arrayX = width / 2 + 30 * inverseZ * object.x;
-                int arrayY = height / 2 + 15 * inverseZ * object.y;
+                int arrayY = height / 2 + 30 * inverseZ * object.y;
 
                 int arrayPosition = arrayX + width * arrayY;
                 if (inverseZ > objectMathBuffer[arrayPosition])
                 {
-                    int lightAmount = (8 * pointLight);
+                    int lightAmount = (12 * pointLight);
 
                     objectMathBuffer[arrayPosition] = inverseZ;
                     objectDrawBuffer[arrayPosition] = lightAscii[lightAmount];
@@ -164,15 +202,8 @@ void Object::Draw_Object(char *objectDrawBuffer, float *objectMathBuffer, size_t
     }
     IncreaseRotation();
 }
-void Object::Draw_Point(char *objectDrawBuffer, float *objectMathBuffer, size_t height, size_t width, float theta, float phi)
+void Object::Draw_Point(char *objectDrawBuffer, float *objectMathBuffer, int height, int width, float theta, float phi)
 {
-    const size_t buffer_size = height * width;
-
-    // used to draw the shape in screen
-    memset(objectDrawBuffer, 32, buffer_size); // 32 => ' ' so the backsground is black
-
-    // used to store information of each point in screen
-    memset(objectMathBuffer, 0, buffer_size * sizeof(float));
 
     Vector3 object = DrawObject(theta, phi);
 
