@@ -14,7 +14,6 @@ private:
     // rotation in degres
     Vector3 rotation;
     Vector3 rotationOverTime;
-    // char lightAscii[13]; //{'.', ',', '-', '~', ':', ';', '=', '!', '*', '#', '$', '@'};
     std::string lightAscii;
     Vector3 scale;
     Vector3 lightSource;
@@ -22,10 +21,7 @@ private:
     const float theta_spacing = 0.07;
     const float phi_spacing = 0.02;
 
-    float innerRadius;
-    float outerRadius;
-
-    Vector3 DrawObject(float innerRadius, float outerRadius, float theta, float phi);
+    virtual Vector3 DrawObject(float theta, float phi) = 0;
 
     Vector3 RotateObject(Vector3 position, Vector3 rotation);
 
@@ -43,6 +39,8 @@ public:
     void setRotationOverTime(Vector3 newRotationOverTime);
     void setColor(std::string newColor);
     void setLightSource(Vector3 newLightSource);
+    void IncreaseRotation();
     void Draw_Object(char *objectDrawBuffer, float *objectMathBuffer, size_t height, size_t width);
+    void Draw_Point(char *objectDrawBuffer, float *objectMathBuffer, size_t height, size_t width, float theta, float phi);
 };
 #endif

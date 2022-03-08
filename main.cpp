@@ -5,6 +5,9 @@
 
 #include "Headers/Vector3.hpp"
 #include "Headers/Object.hpp"
+#include "Headers/Donut.hpp"
+#include "Headers/Sphere.hpp"
+
 using namespace std;
 
 void display_Object(char *buffer, size_t height, size_t width)
@@ -62,7 +65,7 @@ int main()
     Vector3 rotationOverTime = {1, 0.2, 1.5};
     Vector3 lightSource = {0, -1, -1};
     string color = "red";
-    Object donut;
+    Sphere donut;
     donut.setPosition(position);
     donut.setRotation(rotation);
     donut.setScale(scale);
