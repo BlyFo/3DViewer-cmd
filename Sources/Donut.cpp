@@ -24,6 +24,12 @@ void Donut::objectType()
 
 Donut::Donut()
 {
-    innerRadius = 0.5;
-    outerRadius = 3;
+    innerRadius = 1;
+    outerRadius = 2;
+}
+
+Donut::Donut(float newInnerRadius, float newOuterRadius)
+{
+    innerRadius = newInnerRadius;
+    outerRadius = newOuterRadius;
 }

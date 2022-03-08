@@ -90,8 +90,6 @@ Object::Object()
     lightAscii = ".,-~:;=!*#$@";
     scale = {1, 1, 1};
     lightSource = {0, 0, 0};
-    color = "white";
-    colorCode = 0;
 }
 void Object::setPosition(Vector3 newPosition)
 {
@@ -115,49 +113,9 @@ void Object::setRotationOverTime(Vector3 newRotationOverTime)
 {
     rotationOverTime = newRotationOverTime;
 }
-void Object::setColor(string newColor)
-{
-    color = newColor;
-    if (newColor == "black")
-    {
-        colorCode = 30;
-    }
-    if (newColor == "red")
-    {
-        colorCode = 31;
-    }
-    if (newColor == "green")
-    {
-        colorCode = 32;
-    }
-    if (newColor == "yellow")
-    {
-        colorCode = 33;
-    }
-    if (newColor == "blue")
-    {
-        colorCode = 34;
-    }
-    if (newColor == "magenta")
-    {
-        colorCode = 35;
-    }
-    if (newColor == "cyan")
-    {
-        colorCode = 36;
-    }
-    if (newColor == "white")
-    {
-        colorCode = 37;
-    }
-}
 void Object::setLightSource(Vector3 newLightSource)
 {
     lightSource = newLightSource;
-}
-int Object::getColorCode()
-{
-    return colorCode;
 }
 
 void Object::Draw_Object(char *objectDrawBuffer, float *objectMathBuffer, size_t height, size_t width)
@@ -220,6 +178,7 @@ void Object::Draw_Point(char *objectDrawBuffer, float *objectMathBuffer, int hei
         int arrayY = height / 2 + 15 * inverseZ * object.y;
 
         int arrayPosition = arrayX + width * arrayY;
+
         if (inverseZ > objectMathBuffer[arrayPosition])
         {
             int lightAmount = (8 * pointLight);

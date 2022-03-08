@@ -17,5 +17,6 @@ public:
     Vector3 DrawObject(float theta, float phi);
     void objectType();
     Sphere();
+    Sphere(float newRadius);
 };
 #endif

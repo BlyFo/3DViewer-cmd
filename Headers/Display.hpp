@@ -19,6 +19,9 @@ private:
     Vector3 lightSource;
     std::string lightAscii;
 
+    std::string color;
+    int colorCode;
+
     std::vector<Object *> objects;
 
     const float theta_spacing = 0.07;
@@ -33,6 +36,7 @@ public:
     void setPosition(Vector3 newPosition);
     void setRotation(Vector3 newRotation);
     void setScale(Vector3 newScale);
+    void setColor(std::string newColor);
     void setRotationOverTime(Vector3 newRotationOverTime);
     void setLightSource(Vector3 newLightSource);
     void setSize(int newHeight, int newWidth);

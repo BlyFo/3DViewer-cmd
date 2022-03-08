@@ -18,5 +18,6 @@ public:
     Vector3 DrawObject(float theta, float phi);
     void objectType();
     Donut();
+    Donut(float newInnerRadius, float newOuterRadius);
 };
 #endif

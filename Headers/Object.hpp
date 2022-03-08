@@ -9,7 +9,6 @@
 class Object
 {
 private:
-    std::string color;
     Vector3 position;
     // rotation in degres
     Vector3 rotation;
@@ -17,10 +16,9 @@ private:
     std::string lightAscii;
     Vector3 scale;
     Vector3 lightSource;
-    int colorCode;
 
-    const float theta_spacing = 0.07;
-    const float phi_spacing = 0.02;
+    const float theta_spacing = 0.004;
+    const float phi_spacing = 0.001;
 
     virtual Vector3 DrawObject(float theta, float phi) = 0;
 
@@ -38,8 +36,6 @@ public:
     void setRotation(Vector3 newRotation);
     void setScale(Vector3 newScale);
     void setRotationOverTime(Vector3 newRotationOverTime);
-    void setColor(std::string newColor);
-    int getColorCode();
     void setLightSource(Vector3 newLightSource);
     void IncreaseRotation();
     void Draw_Object(char *objectDrawBuffer, float *objectMathBuffer, size_t height, size_t width);

@@ -24,5 +24,9 @@ void Sphere::objectType()
 
 Sphere::Sphere()
 {
-    radius = 2;
+    radius = 1;
+}
+Sphere::Sphere(float newRadius)
+{
+    radius = newRadius;
 }

@@ -24,6 +24,8 @@ Display::Display()
     lightSource = {0, 0, 0};
     height = 0;
     width = 0;
+    color = "white";
+    colorCode = 0;
 }
 void Display::setPosition(Vector3 newPosition)
 {
@@ -80,7 +82,9 @@ void Display::drawObjects()
     printf("\x1b[2J");
     for (;;)
     {
-        memset(objectDrawBuffer, 32, buffer_size); // 32 => ' ' so the backsground is black
+        // 32 => ' ' so the backsground is black
+        // 45 => '-' usefull for debug
+        memset(objectDrawBuffer, 32, buffer_size);
 
         // used to store information of each point in screen
         memset(objectMathBuffer, 0, buffer_size * sizeof(float));
@@ -112,15 +116,15 @@ void Display::displayObjects(char *buffer)
     {
         if (buffer[k] == '@' || buffer[k] == '$' || buffer[k] == '#' || buffer[k] == '*')
         {
-            printf("\033[1;34m");
+            printf("\033[1;%dm", colorCode);
         }
         if (buffer[k] == '!' || buffer[k] == '=' || buffer[k] == ';' || buffer[k] == ':')
         {
-            printf("\033[0;34m");
+            printf("\033[0;%dm", colorCode);
         }
         if (buffer[k] == '~' || buffer[k] == '-' || buffer[k] == ',' || buffer[k] == '.')
         {
-            printf("\033[2;34m");
+            printf("\033[2;%dm", colorCode);
         }
 
         if (k % width == 0)
@@ -133,4 +137,40 @@ void Display::displayObjects(char *buffer)
         }
     }
     printf("\033[0m");
+}
+void Display::setColor(string newColor)
+{
+    color = newColor;
+    if (newColor == "black")
+    {
+        colorCode = 30;
+    }
+    if (newColor == "red")
+    {
+        colorCode = 31;
+    }
+    if (newColor == "green")
+    {
+        colorCode = 32;
+    }
+    if (newColor == "yellow")
+    {
+        colorCode = 33;
+    }
+    if (newColor == "blue")
+    {
+        colorCode = 34;
+    }
+    if (newColor == "magenta")
+    {
+        colorCode = 35;
+    }
+    if (newColor == "cyan")
+    {
+        colorCode = 36;
+    }
+    if (newColor == "white")
+    {
+        colorCode = 37;
+    }
 }
