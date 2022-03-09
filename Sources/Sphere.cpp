@@ -12,9 +12,9 @@ using namespace std;
 Vector3 Sphere::DrawObject(float theta, float phi)
 {
     Vector3 result;
-    result.x = (radius * cos(theta)) * cos(phi);
-    result.y = radius * sin(theta);
-    result.z = (radius * cos(theta)) * sin(phi);
+    result.x = radius * cos(theta) * sin(phi / 2);
+    result.z = radius * cos(phi / 2);
+    result.y = radius * sin(theta) * sin(phi / 2);
     return result;
 }
 void Sphere::objectType()
